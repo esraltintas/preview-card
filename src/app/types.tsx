@@ -10,3 +10,10 @@ export interface CardProps {
   earliest_delivery: string;
   description: string;
 }
+
+export interface storeState {
+  cart: CardProps[];
+  addItemToCart: (item: CardProps) => void;
+  removeItemFromCart: (item: { itemIndex: number }) => void;
+  emptyCart: () => void;
+}
