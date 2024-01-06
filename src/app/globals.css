@@ -16,3 +16,7 @@ body {
 a {
   color: #163c2c;
 }
+
+.cart-badge {
+  @apply absolute font-bold text-orange-600 ml-4 mt-1 text-center w-4;
+}

@@ -13,6 +13,10 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
           width={100}
           height={100}
         />
+        <p>{project.name}</p>
+        <p>{project.description}</p>
+        <p>{project.offered_volume_in_tons}</p>
+        <button>Add to Cart</button>
       </div>
     </Link>
   );
