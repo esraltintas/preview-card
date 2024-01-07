@@ -3,7 +3,6 @@
 import useCart from "../(store)/store";
 export default function CartDetail() {
   const { cart } = useCart();
-  console.log(cart);
   return (
     <div>
       {cart &&

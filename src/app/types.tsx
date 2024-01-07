@@ -17,3 +17,9 @@ export interface storeState {
   removeItemFromCart: (item: { itemIndex: number }) => void;
   emptyCart: () => void;
 }
+
+export interface ButtonProps {
+  className: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}
