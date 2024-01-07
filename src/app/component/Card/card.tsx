@@ -1,50 +1,41 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, { useState } from "react";
 import Button from "../Button/button";
 import { CardProps } from "@/app/types";
 import useCart from "@/app/(store)/store";
+import Modal from "../Modal/modal";
+import CardDetails from "./cartDetail";
+import ModalContent from "./modalContent";
 
 const Card: React.FC<{ project: CardProps }> = ({ project }) => {
-  const { cart, addItemToCart } = useCart();
+  const { addItemToCart } = useCart();
+  const [showModal, setShowModal] = useState(false);
+
   const handleClick = () => {
     addItemToCart(project);
   };
+
+  const handleCardClick = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="flex flex-col rounded-md p-6 bg-slate-50 hover:bg-indigo-100">
-      <Link href={`/project/${project.id}`}>
-        <div className="card-wrapper flex flex-col gap-4">
-          <Image
-            className="rounded-sm"
-            src={project.image}
-            alt={project.name}
-            width={400}
-            height={400}
-          />
-          <p className="truncate ...">{project.description}</p>
-          <p>{project.name}</p>
-
-          <div className="flex gap-5">
-            <p>
-              <span className="font-bold">Volume:</span>{" "}
-              {project.offered_volume_in_tons}
-            </p>
-            <p>
-              <span className="font-bold">Price:</span> {project.price_per_ton}€
-            </p>
-          </div>
-        </div>
-      </Link>
+      <div className="card-details" onClick={handleCardClick}>
+        <CardDetails project={project} />
+      </div>
       <div className="flex items-end justify-end">
         <Button
-          className="border border-black py-1 px-3 rounded-2xl max-w-40 mt-6 cursor-pointer hover:bg-gray-200"
+          className="border border-black py-1 px-3 rounded-2xl max-w-40 mt-6 hover:bg-gray-200"
           onClick={handleClick}
         >
           Add to Cart
         </Button>
       </div>
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <ModalContent project={project} />
+      </Modal>
     </div>
   );
 };

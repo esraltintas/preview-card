@@ -4,7 +4,6 @@ export default function ProjectDetail({
 }: {
   params: { id: number };
 }) {
-  console.log(data, id);
   const project = data.projects.find((i) => i.id === id);
   return (
     <div>
