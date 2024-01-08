@@ -3,9 +3,9 @@ import Image from "next/image";
 import { CardProps } from "@/app/types";
 
 const CardDetails: React.FC<{ project: CardProps }> = ({ project }) => (
-  <div className="card-wrapper flex flex-col gap-4">
+  <div className="card-wrapper flex flex-col gap-4 cursor-pointer">
     <Image
-      className="rounded-sm"
+      className="rounded-sm "
       src={project.image}
       alt={project.name}
       width={400}
