@@ -21,14 +21,16 @@ export default function Home() {
 
   return (
     <main className="flex flex-col p-10">
-      <label>
-        Filter by Volume
+      <div className="border-b border-solid border-black w-full pb-15 mb-10 max-w-64">
         <input
+          className="w-64"
           type="number"
           value={filterVolume || ""}
+          placeholder="Filter volume..."
           onChange={(e) => setFilterVolume(parseInt(e.target.value, 10))}
         />
-      </label>
+      </div>
+
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-10">
         {filteredProjects.map((project) => (
           <Card key={project.id} project={project} />
