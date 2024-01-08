@@ -15,31 +15,31 @@ const ModalContent: React.FC<{ project: CardProps }> = ({ project }) => (
       <p className="font-bold">{project.name}</p>
       <p>
         <span className="font-bold pr-0.5">Offered Volume in Tons:</span>
-        {project.offered_volume_in_tons}
+        {project?.offered_volume_in_tons}
       </p>
 
       <p>
-        <span className="font-bold pr-0.5">Country:</span> {project.country}
+        <span className="font-bold pr-0.5">Country:</span> {project?.country}
       </p>
       <p>
         <span className="font-bold pr-0.5">Price per Ton:</span>
-        {project.price_per_ton}
+        {project?.price_per_ton}
       </p>
       <p>
         <span className="font-bold pr-0.5">Distribution Weight:</span>
-        {project.distribution_weight}
+        {project?.distribution_weight}
       </p>
       <p>
         <span className="font-bold pr-0.5">Supplier Name:</span>
-        {project.supplier_name}
+        {project?.supplier_name}
       </p>
       <p>
         <span className="font-bold pr-0.5">Earliest Delivery:</span>
-        {project.earliest_delivery}
+        {project?.earliest_delivery}
       </p>
       <p>
         <span className="font-bold pr-0.5">Description:</span>
-        {project.description}
+        {project?.description}
       </p>
     </div>
   </div>

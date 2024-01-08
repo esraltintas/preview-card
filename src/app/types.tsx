@@ -11,7 +11,7 @@ export interface CardProps {
   description: string;
 }
 
-export interface storeState {
+export interface cartStoreState {
   cart: CardProps[];
   addItemToCart: (item: CardProps) => void;
   removeItemFromCart: (item: { itemIndex: number }) => void;

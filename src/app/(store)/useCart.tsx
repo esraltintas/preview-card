@@ -1,11 +1,14 @@
 import { create } from "zustand";
-import { CardProps, storeState } from "../types";
+import { CardProps, cartStoreState } from "../types";
 import { isItemInCart } from "../utils/util";
 
 const CART_STORAGE_KEY = "cart";
 
-const useCart = create<storeState>((set) => {
-  const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+const useCart = create<cartStoreState>((set) => {
+  const storedCart =
+    typeof window !== "undefined"
+      ? localStorage.getItem(CART_STORAGE_KEY)
+      : null;
   const initialCart = storedCart ? JSON.parse(storedCart) : [];
   return {
     cart: initialCart,

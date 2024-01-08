@@ -1,17 +1,71 @@
 "use client";
-
-import useCart from "../(store)/store";
+import React from "react";
+import useCart from "../(store)/useCart";
 import ModalContent from "../component/Card/modalContent";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Button from "../component/Button/button";
+
 export default function CartDetail() {
-  const { cart } = useCart();
-  console.log(cart.length);
+  let totalPriceCount = 0;
+  let totalVolumeCount = 0;
+  const { cart, removeItemFromCart } = useCart();
+  const router = useRouter();
+
+  const handleRemoveClick = (projectId: number, projectName: string) => {
+    const itemIndex = cart.findIndex((item) => item.id === projectId);
+
+    if (itemIndex !== -1) {
+      removeItemFromCart({ itemIndex });
+    }
+  };
+
+  const handleCheckoutClick = () => {
+    router.push("/success");
+  };
+
   return (
     <div className="flex flex-col gap-20 p-20">
       {cart?.length !== 0 ? (
-        cart.map((project) => (
-          <ModalContent key={project.id} project={project} />
-        ))
+        <>
+          {cart.map((project) => {
+            totalPriceCount += project.price_per_ton;
+            totalVolumeCount += project.offered_volume_in_tons;
+
+            return (
+              <div className="flex flex-row" key={project.id}>
+                <ModalContent project={project} />
+                <FontAwesomeIcon
+                  className="cursor-pointer text-lg"
+                  icon={faTrash}
+                  width={20}
+                  height={20}
+                  onClick={() => handleRemoveClick(project.id, project.name)}
+                />
+              </div>
+            );
+          })}
+          <div className="flex flex-row gap-10 justify-between items-center">
+            <div>
+              <span className="font-bold pr-0.5">Total Price per Ton:</span>
+              <span>{totalPriceCount}</span>
+            </div>
+            <div>
+              <span className="font-bold pr-0.5">
+                Total Offered Volume in Tons:
+              </span>
+              <span>{totalVolumeCount}</span>
+            </div>
+            <Button
+              className="border border-black py-1 px-3 rounded-2xl max-w-40 hover:bg-gray-200"
+              onClick={() => handleCheckoutClick()}
+            >
+              Checkout
+            </Button>
+          </div>
+        </>
       ) : (
         <div className="flex flex-col gap-5 p-20 justify-center items-center">
           <p className="font-medium text-xl">
