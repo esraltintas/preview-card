@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import Button from "../Button/button";
 import { CardProps } from "@/app/types";
 import useCart from "@/app/(store)/store";
@@ -14,6 +15,7 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
 
   const handleClick = () => {
     addItemToCart(project);
+    toast.success("This project has been successfully added!");
   };
 
   const handleCardClick = () => {

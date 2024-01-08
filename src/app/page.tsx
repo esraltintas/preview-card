@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-
 import { data } from "./utils/data";
 import Card from "./component/Card/card";
+import Toast from "./toast";
 
 export default function Home() {
   const { projects } = data;
@@ -35,6 +35,7 @@ export default function Home() {
           <Card key={project.id} project={project} />
         ))}
       </div>
+      <Toast />
     </main>
   );
 }
