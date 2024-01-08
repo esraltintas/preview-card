@@ -28,6 +28,7 @@ export default function CartDetail() {
 
   return (
     <div className="flex flex-col gap-20 p-20">
+      <h1 className="font-bold text-3xl">Cart</h1>
       {cart?.length !== 0 ? (
         <>
           {cart.map((project) => {
@@ -35,7 +36,7 @@ export default function CartDetail() {
             totalVolumeCount += project.offered_volume_in_tons;
 
             return (
-              <div className="flex flex-row" key={project.id}>
+              <div className="flex flex-row max-w-3xl" key={project.id}>
                 <ModalContent project={project} />
                 <FontAwesomeIcon
                   className="cursor-pointer text-lg"
