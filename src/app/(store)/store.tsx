@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { CardProps, storeState } from "../types";
+import { isItemInCart } from "../utils/util";
 
 const CART_STORAGE_KEY = "cart";
 
@@ -10,11 +11,13 @@ const useCart = create<storeState>((set) => {
     cart: initialCart,
     addItemToCart: (item: CardProps) => {
       set((state) => {
-        const newCart = [...state.cart, item];
-
-        // Update local storage after adding item
-        localStorage.setItem("cart", JSON.stringify(newCart));
-        return { cart: newCart };
+        // If the item is not in the cart, add it
+        if (!isItemInCart(state.cart, item)) {
+          const newCart = [...state.cart, item];
+          localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(newCart));
+          return { cart: newCart };
+        }
+        return state;
       });
     },
     removeItemFromCart: (item) => {

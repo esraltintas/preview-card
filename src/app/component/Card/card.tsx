@@ -5,17 +5,22 @@ import { toast } from "react-toastify";
 import Button from "../Button/button";
 import { CardProps } from "@/app/types";
 import useCart from "@/app/(store)/store";
+import { isItemInCart } from "@/app/utils/util";
 import Modal from "../Modal/modal";
 import CardDetails from "./cartDetail";
 import ModalContent from "./modalContent";
 
 const Card: React.FC<{ project: CardProps }> = ({ project }) => {
-  const { addItemToCart } = useCart();
+  const { addItemToCart, cart } = useCart();
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
-    addItemToCart(project);
-    toast.success("This project has been successfully added!");
+    if (isItemInCart(cart, project)) {
+      toast.warning(`${project.name} is already in the cart!`);
+    } else {
+      addItemToCart(project);
+      toast.success(`${project.name} has been successfully added!`);
+    }
   };
 
   const handleCardClick = () => {
