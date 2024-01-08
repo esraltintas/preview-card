@@ -61,6 +61,7 @@ export default function CartDetail() {
             <Button
               className="border border-black py-1 px-3 rounded-2xl max-w-40 hover:bg-gray-200"
               onClick={() => handleCheckoutClick()}
+              disabled={false}
             >
               Checkout
             </Button>

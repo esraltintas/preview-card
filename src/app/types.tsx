@@ -21,5 +21,6 @@ export interface cartStoreState {
 export interface ButtonProps {
   className: string;
   onClick: () => void;
+  disabled: boolean;
   children: React.ReactNode;
 }
