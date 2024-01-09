@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
+
 import Button from "../Button/button";
 import { CardProps } from "@/app/types";
 import useCart from "@/app/(store)/useCart";
@@ -14,6 +16,7 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
   const { cart, addItemToCart, removeItemFromCart } = useCart();
   const [showModal, setShowModal] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+  const router = useRouter();
 
   const handleAddClick = () => {
     addItemToCart(project);
@@ -30,7 +33,13 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
   };
 
   const handleCardClick = () => {
+    router.push(`/?${project.id}`);
     setShowModal(!showModal);
+  };
+
+  const handleModalClose = () => {
+    router.push(`/`);
+    setShowModal(false);
   };
 
   return (
@@ -77,7 +86,7 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
         )}
       </div>
 
-      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+      <Modal isVisible={showModal} onClose={() => handleModalClose()}>
         <ModalContent project={project} />
       </Modal>
     </div>
