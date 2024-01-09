@@ -3,7 +3,7 @@ export interface CardProps {
   name: string;
   image: string;
   price_per_ton: number;
-  sdgs: string[];
+  sdgs: number[];
   country: string;
   offered_volume_in_tons: number;
   distribution_weight: number;
