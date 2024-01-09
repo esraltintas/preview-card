@@ -12,6 +12,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "types": ["jest", "node"],
+    "baseUrl": ".",
     "incremental": true,
     "plugins": [
       {

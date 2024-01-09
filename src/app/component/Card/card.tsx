@@ -18,11 +18,13 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   const router = useRouter();
 
+  // Function to handle the "Add to Cart" button click
   const handleAddClick = () => {
     addItemToCart(project);
     setAddedToCart(true);
   };
 
+  // Function to handle the "Remove from Cart" button click
   const handleRemoveClick = (projectId: number) => {
     const itemIndex = cart.findIndex((item) => item.id === projectId);
 
@@ -32,11 +34,13 @@ const Card: React.FC<{ project: CardProps }> = ({ project }) => {
     setAddedToCart(false);
   };
 
+  // Function to handle the card click (opens modal and updates the route)
   const handleCardClick = () => {
     router.push(`/?${project.id}`);
     setShowModal(!showModal);
   };
 
+  // Function to handle modal close (closes modal and updates the route)
   const handleModalClose = () => {
     router.push(`/`);
     setShowModal(false);

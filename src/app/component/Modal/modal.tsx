@@ -17,11 +17,13 @@ const Modal: React.FC<{
     <div
       className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
       id="wrapper"
+      data-testid="wrapper-modal"
       onClick={handleClose}
     >
       <div className="w-[800px] flex flex-col">
         <FontAwesomeIcon
           className="text-white text-xl place-self-end pb-1 cursor-pointer"
+          data-testid="close-modal"
           icon={faCircleXmark}
           width={20}
           height={20}
