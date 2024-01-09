@@ -29,8 +29,8 @@ export function Header() {
       </Link>
 
       <h5 className="text-sm">Ceezer Marketplace</h5>
-      <div>
-        <span className="text-neutral-600">{cartLength}</span>
+      <div className="flex flex-row gap-2">
+        <span className="text-neutral-600 font-bold">{cartLength}</span>
         <Link href="/cart">
           <FontAwesomeIcon icon={faCartShopping} width={20} height={20} />
         </Link>
