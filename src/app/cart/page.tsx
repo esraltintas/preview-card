@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import useCart from "../(store)/useCart";
-import ModalContent from "../component/Card/modalContent";
+import ModalContent from "../component/Card/ModalContent";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import Button from "../component/Button/button";
+import Button from "../component/Button/Button";
 
 export default function CartDetail() {
   let totalPriceCount = 0;

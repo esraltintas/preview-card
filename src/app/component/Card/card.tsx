@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 
-import Button from "../Button/button";
+import Button from "../Button/Button";
 import { CardProps } from "@/app/types";
 import useCart from "@/app/(store)/useCart";
-import Modal from "../Modal/modal";
-import CardDetails from "./cartDetail";
-import ModalContent from "./modalContent";
+import Modal from "../Modal/Modal";
+import CardDetails from "./CartDetail";
+import ModalContent from "./ModalContent";
 
 const Card: React.FC<{ project: CardProps }> = ({ project }) => {
   const { cart, addItemToCart, removeItemFromCart } = useCart();

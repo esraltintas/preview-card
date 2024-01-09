@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { data } from "./utils/data";
-import Card from "./component/Card/card";
+import Card from "./component/Card/Card";
 
 export default function Home() {
   const { projects } = data;

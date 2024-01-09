@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Modal from "./modal";
+import Modal from "./Modal";
 
 describe("Modal component", () => {
   test("renders modal when isVisible is true", () => {
